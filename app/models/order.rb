@@ -13,4 +13,14 @@ class Order < ApplicationRecord
     self.token = SecureRandom.uuid
   end
 
+#修改 model 设定 order 付款完成与付款方式纪录的method
+
+  def set_payment_with!(method)
+   self.update_columns(payment_method: method )
+  end
+
+  def pay!
+   self.update_columns(is_paid: true )
+  end
+
 end
